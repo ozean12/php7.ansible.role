@@ -1,22 +1,20 @@
 ---
-- name: Add PPA Repository
-  sudo: yes
-  apt_repository: repo={{ php_ppa }}
 
-- name: Update apt
-  sudo: yes
-  apt: update_cache=yes
+- name: install libselinux-python binary for Ansible to work
+  yum: name=libselinux-python state=present
+  when: ansible_pkg_mgr == "yum"
 
-- name: Install PHP
-  sudo: yes
-  apt: pkg=php7.0 state=latest
+#- name: delegate to SELINUX handling subtask, if necessary
+#  include: set-selinux.yml
+#  when: nginx_in_selinux is defined and nginx_in_selinux == true
 
-- name: Install PHP Packages
-  sudo: yes
-  apt: pkg={{ item }} state=latest
-  with_items: php_packages
-  when: php_packages is defined
-  notify:
-    - restart php7-fpm
+- name: delegate to APT system for installation
+  include: use-apt.yml
+  when: ansible_pkg_mgr == "apt"
+
+- name: delegate to YUM system for installation
+  include: use-yum.yml
+  when: ansible_pkg_mgr == "yum"
 
 - include: configure.yml
+
