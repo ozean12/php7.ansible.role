@@ -7,10 +7,11 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-      - all
-    - name: Debian
-      versions:
-      - all
+      - trusty
+      - 14.04
+    #- name: Debian
+    #  versions:
+    #  - all
     - name: EL
       versions:
       - 7
