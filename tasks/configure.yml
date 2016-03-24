@@ -11,7 +11,7 @@
   register: phpcli_ubuntu
 
 - include: php-fpm-ubuntu.yml
-  when: phpfp_ubuntu.stat.exists
+  when: phpfpm_ubuntu.stat.exists
 
 - include: php-cli-ubuntu.yml
   when: phpcli_ubuntu.stat.exists
