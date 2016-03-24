@@ -11,6 +11,9 @@ galaxy_info:
     - name: Debian
       versions:
       - all
+    - name: CentOS
+      versions:
+      - 7.2
   galaxy_tags:
     - php
     - php7

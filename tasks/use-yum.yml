@@ -8,8 +8,8 @@
 #  Description: 
 #  Reference: 
 #
-#   * skecskes/vagrant-centos7-ansible-lamp/install.yml
-#    - https://github.com/skecskes/vagrant-centos7-ansible-lamp/blob/master/ansible/roles/php70/tasks/install.yml
+#   * How To Upgrade to PHP 7 on CentOS 7 | DigitalOcean
+#    - https://www.digitalocean.com/community/tutorials/how-to-upgrade-to-php-7-on-centos-7
 #
 # =========================================================== 
 
@@ -21,28 +21,30 @@
 - name: Install remi from remote repo
   yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm state=present
 
+- name: get ius repo install script
+  get_url: url=https://setup.ius.io/ dest=/tmp/setup-ius.sh
+
+- name: Install ius from remote repo
+  command: bash /tmp/setup-ius.sh
+
 - name: upgrade all packages
   yum: name=* state=latest
 
 - name: Install php
-  yum: pkg={{ item }} enablerepo=remi,remi-php70 state=present
+  yum: pkg={{ item }} enablerepo=ius state=present
   with_items:
-    - php
+    - php70u-cli
+    - php70u-fpm
+    - php70u-fpm-nginx
 
 - name: Install php modules
-  yum: pkg={{ item }} enablerepo=remi,remi-php70 state=present
+  #yum: pkg={{ item }} enablerepo=remi,remi-php70 state=present
+  yum: pkg={{ item }} enablerepo=ius state=present
   with_items:
-    - php-mbstring
-    - php-devel
-    - php-opcache
-    - php-soap
-    - php-pdo
-    - php-mcrypt
-    - php-pecl-xdebug
-    - php-xml
-    - php-mysql
-    - php-gd
+    - php70u-mysqlnd
+    - php70u-common
+    - php70u-pdo
   when: php_packages is defined
   notify:
-    - restart php7-fpm
+    - restart php7-fpm on centos
 
