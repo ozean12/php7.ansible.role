@@ -26,12 +26,12 @@ Available variables are listed below, along with default values (see `defaults/m
     php_upload_max_filesize: "20M"
     php_post_max_size: "20M"
     php_memory_limit: "1024M"
-    php_owner: www-data
-    php_group: www-data
+    php_owner: nginx
+    php_group: nginx
 
 ### Note
 
-If you see some error message, maybe you need modify `php_owner` and `php_group` from **www-data** to **nginx**. 
+If you see some error message, maybe you need modify `php_owner` and `php_group` from **nginx** to **www-data**. 
 
 * Browser:
  
