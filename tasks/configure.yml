@@ -2,14 +2,24 @@
 ## vim:ft=ansible :
 
 ---
+
+# Ubuntu
 - stat: path=/etc/php/7.0/fpm/php.ini
-  register: phpfpm
+  register: phpfpm_ubuntu
 
 - stat: path=/etc/php/7.0/cli/php.ini
-  register: phpcli
+  register: phpcli_ubuntu
 
-- include: php-fpm.yml
-  when: phpfpm.stat.exists
+- include: php-fpm-ubuntu.yml
+  when: phpfp_ubuntu.stat.exists
 
-- include: php-cli.yml
-  when: phpcli.stat.exists
+- include: php-cli-ubuntu.yml
+  when: phpcli_ubuntu.stat.exists
+
+# CentOS
+- stat: path=/etc/php-fpm.conf
+  register: phpfpm_centos
+
+- include: php-fpm-centos.yml
+  when: phpfpm_centos.stat.exists
+
