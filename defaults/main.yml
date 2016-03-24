@@ -16,5 +16,5 @@ php_timezone: Asia/Taipei
 php_upload_max_filesize: "20M"
 php_post_max_size: "20M"
 php_memory_limit: "1024M"
-php_owner: www-data
-php_group: www-data
+php_owner: nginx
+php_group: nginx
