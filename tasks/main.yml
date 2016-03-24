@@ -7,9 +7,9 @@
   yum: name=libselinux-python state=present
   when: ansible_pkg_mgr == "yum"
 
-- name: delegate to SELINUX handling subtask, if necessary
-  include: set-selinux.yml
-  when: php_in_selinux is defined and php_in_selinux == true
+#- name: delegate to SELINUX handling subtask, if necessary
+#  include: set-selinux.yml
+#  when: php_in_selinux is defined and php_in_selinux == true
 
 - name: delegate to APT system for installation
   include: use-apt.yml
