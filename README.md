@@ -1,8 +1,8 @@
 # Ansible Role: PHP7
 
-An Ansible role that installs and configure PHP 7 on Debian/Ubuntu servers.
+An Ansible role of Deploy PHP 7 (php-fpm) for nginx on Ubuntu and CentOS. (forked from [https://galaxy.ansible.com/itcraftsmanpl/php7/](https://galaxy.ansible.com/itcraftsmanpl/php7/))
 
-Current PHP7 version: **7.0.4**
+* Current PHP7 version: **7.0.4**
 
 ## Requirements
 
@@ -31,16 +31,29 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ### Note
 
-If you see some error message, maybe you need modify `php_owner` and `php_group` from **nginx** to **www-data**. 
+1. If you see some error message, maybe you need modify `php_owner` and `php_group` from **nginx** to **www-data**. 
 
-* Browser:
+ * Browser:
  
- > `An error occurred.`
+     > `An error occurred.`
 
-* error.log:
+ * error.log:
 
- > `connect() to unix:/var/run/php/php7.0-fpm.sock failed (13: Permission denied) while connecting to upstream ...` 
+     > `connect() to unix:/var/run/php/php7.0-fpm.sock failed (13: Permission denied) while connecting to upstream ...` 
 
+2. The `/target/path/` of **socket**, configure files is difference on Ubuntu and CentOS. **Be careful your Nginx setting !**
+
+ * Ubuntu:
+      * Configure:
+         * `/etc/php/7.0/fpm/php.ini`
+         * `/etc/php/7.0/cli/php.ini`
+     * Socket: `/var/run/php/php7.0-fpm.sock`
+
+ * CentOS:
+     * Configure:
+         * `/etc/php-fpm.d/www.conf`
+         * `/etc/php.ini`
+     * Socket: `/run/php-fpm/www.sock`
 
 ## Dependencies
 
