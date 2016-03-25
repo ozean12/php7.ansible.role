@@ -24,11 +24,11 @@
   notify: restart php7-fpm on centos
 
 - name: Disable port upstream of php-fpm 
-  lineinfile: "dest=/etc/nginx/conf.d/php-fpm.conf state=present regexp='^server 127.0.0.1:9000' line='#server 127.0.0.1:9000'"
+  lineinfile: "dest=/etc/nginx/conf.d/php-fpm.conf state=present regexp='^        server 127.0.0.1:9000' line='        #server 127.0.0.1:9000'"
   notify: restart php7-fpm on centos
 
 - name: Enable socket upstream of php-fpm 
-  lineinfile: "dest=/etc/nginx/conf.d/php-fpm.conf state=present regexp='^#server unix:/run/php-fpm/www.sock;' line='server unix:/run/php-fpm/www.sock;'"
+  lineinfile: "dest=/etc/nginx/conf.d/php-fpm.conf state=present regexp='^        #server unix:/run/php-fpm/www.sock;' line='        server unix:/run/php-fpm/www.sock;'"
   notify: restart php7-fpm on centos
   
 

@@ -45,7 +45,6 @@
     - php70u-mysqlnd
     - php70u-opcache
     - php70u-pdo
-  when: php_packages is defined
-  notify:
-    - restart php7-fpm on centos
+  #when: php_packages is defined
+  notify: restart php7-fpm on centos
 
