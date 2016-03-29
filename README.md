@@ -1,5 +1,7 @@
 # Ansible Role: PHP7
 
+[![Build Status](https://travis-ci.org/chusiang/php7.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/php7.ansible.role)
+
 An Ansible role of Deploy PHP 7 (php-fpm) for nginx on Ubuntu and CentOS. (forked from [https://galaxy.ansible.com/itcraftsmanpl/php7/](https://galaxy.ansible.com/itcraftsmanpl/php7/))
 
 * Current PHP7 version: **7.0.4**
@@ -12,6 +14,7 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
+    # Ubuntu
     php_ppa: "ppa:ondrej/php"    
     php_packages:
       - php7.0-common
@@ -22,6 +25,7 @@ Available variables are listed below, along with default values (see `defaults/m
       - php7.0-fpm
       - php7.0-mysql
       - php7.0-gd
+
     php_timezone: Asia/Taipei
     php_upload_max_filesize: "20M"
     php_post_max_size: "20M"
