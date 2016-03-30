@@ -3,6 +3,10 @@
 
 ---
 
+- name: create socket directory for ceotns 6
+  file: path=/run/php-fpm/ state=directory mode=0755
+  when: ansible_distribution_major_version == "6"
+
 - name: Disable port listen
   lineinfile: "dest=/etc/php-fpm.d/www.conf state=present regexp='^listen = 127.0.0.1:9000' line=';listen = 127.0.0.1:9000'"
   notify: restart php7-fpm on centos
