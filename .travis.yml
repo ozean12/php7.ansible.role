@@ -14,5 +14,5 @@ script:
     - echo "==> Validating the test results..."
 
     - grep '00:00:00 php-fpm7.0' build_result
-    - grep '00:00:00 php-fpm7.0' build_result.centos6
+    - grep '00:00:00 php-fpm' build_result.centos6
 
