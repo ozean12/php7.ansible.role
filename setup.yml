@@ -9,15 +9,16 @@
     - defaults/main.yml
 
   tasks:
-    - name: disable selinux on centos
-      selinux: state=disabled
-      when: ansible_distribution|lower == "centos"
-
     - name: include main tasks
       include: tasks/main.yml
 
-    - name: restart php-fpm
+    - name: restart php-fpm on ubuntu
       service: name=php7.0-fpm state=restarted
+      when: ansible_distribution|lower == "ubuntu"
+
+    - name: restart php-fpm on centos
+      service: name=php-fpm state=restarted
+      when: ansible_distribution|lower == "centos"
 
     - name: check process
       shell: ps -A | grep php-fpm
