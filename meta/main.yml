@@ -11,7 +11,7 @@ galaxy_info:
       - trusty
     - name: Debian
       versions:
-      - 8
+      - jessie
     - name: EL
       versions:
       - 6
