@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/chusiang/php7.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/php7.ansible.role)
 
-An Ansible role of Deploy PHP 7 (php-fpm) for nginx on Ubuntu and CentOS. (forked from [https://galaxy.ansible.com/itcraftsmanpl/php7/](https://galaxy.ansible.com/itcraftsmanpl/php7/))
+An Ansible role of Deploy PHP 7 (php-fpm) for nginx on CentOS, Debian, and Ubuntu. (forked from [https://galaxy.ansible.com/itcraftsmanpl/php7/](https://galaxy.ansible.com/itcraftsmanpl/php7/))
 
 * Current PHP7 version: **7.0.4**
 
