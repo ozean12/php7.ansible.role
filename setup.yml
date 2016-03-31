@@ -16,6 +16,10 @@
       service: name=php7.0-fpm state=restarted
       when: ansible_distribution|lower == "ubuntu"
 
+    - name: restart php-fpm on debian
+      service: name=php7.0-fpm state=restarted
+      when: ansible_distribution|lower == "debian"
+
     - name: restart php-fpm on centos
       service: name=php-fpm state=restarted
       when: ansible_distribution|lower == "centos"
