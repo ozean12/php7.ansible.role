@@ -9,9 +9,9 @@ galaxy_info:
     - name: Ubuntu
       versions:
       - trusty
-    #- name: Debian
-    #  versions:
-    #  - all
+    - name: Debian
+      versions:
+      - 8
     - name: EL
       versions:
       - 6
