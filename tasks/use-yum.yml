@@ -19,13 +19,13 @@
   yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present
   when: ansible_distribution_major_version == "7"
 
-- name: Install epel from remote repo on CentOS 6
-  yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm state=present
-  when: ansible_distribution_major_version == "6"
-
 - name: Install remi from remote repo on CentOS 7
   yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm state=present
   when: ansible_distribution_major_version == "7"
+
+- name: Install epel from remote repo on CentOS 6
+  yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm state=present
+  when: ansible_distribution_major_version == "6"
 
 - name: Install remi from remote repo on CentOS 6
   yum: name=http://rpms.remirepo.net/enterprise/remi-release-6.rpm state=present
@@ -55,6 +55,7 @@
     - php70u-mysqlnd
     - php70u-opcache
     - php70u-pdo
+    - php70u-mbstring
   #when: php_packages is defined
   notify: restart php7-fpm on centos
 
