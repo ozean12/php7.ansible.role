@@ -12,6 +12,7 @@ php_packages:
   - php7.0-fpm
   - php7.0-mysql
   - php7.0-gd
+  - php7.0-mbstring
 php_timezone: Asia/Taipei
 php_upload_max_filesize: "20M"
 php_post_max_size: "20M"
