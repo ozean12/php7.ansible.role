@@ -2,6 +2,9 @@
 ## vim:ft=ansible :
 
 ---
+
+- debug: msg="==> Setting  PHP7 configure"
+
 - name: Set permissions on socket - owner
   lineinfile: "dest=/etc/php/7.0/fpm/pool.d/www.conf state=present regexp='^;?listen.owner' line='listen.owner = {{ php_owner }}'"
 
@@ -82,3 +85,4 @@
               regexp='memory_limit(\s)?='
               line='memory_limit = {{ php_memory_limit }}'
   notify: restart php7-fpm
+

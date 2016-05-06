@@ -44,13 +44,13 @@ Vagrant.configure("2") do |config|
   end
   
   # CentOS 7.2
-  #config.vm.define "centos7", primary: true do |node|
-  #    node.vm.box = "bento/centos-7.2"
+  config.vm.define "centos7", primary: true do |node|
+      node.vm.box = "bento/centos-7.2"
   
-  #    node.vm.provision "ansible" do |ansible|
-  #        ansible.playbook = "setup.yml"
-  #        ansible.sudo = true
-  #    end
-  #end
+      node.vm.provision "ansible" do |ansible|
+          ansible.playbook = "setup.yml"
+          ansible.sudo = true
+      end
+  end
   
 end

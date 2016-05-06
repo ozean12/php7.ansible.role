@@ -3,7 +3,7 @@
 
 ---
 
-# Ubuntu
+# Debian & Ubuntu.
 - stat: path=/etc/php/7.0/fpm/php.ini
   register: phpfpm_ubuntu
 
