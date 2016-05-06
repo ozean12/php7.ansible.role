@@ -35,7 +35,7 @@
 - name: Install PHP Packages
   become: true
   apt: pkg={{ item }} state=latest
-  with_items: php_packages
+  with_nested: "{{ php_packages }}"
   when: php_packages is defined
   notify:
     - restart php7-fpm
