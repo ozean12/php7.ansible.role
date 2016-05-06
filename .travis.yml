@@ -22,3 +22,6 @@ script:
     #- grep '00:00:00 php-fpm7.0' build_result.debian7
     - grep '00:00:00 php-fpm7.0' build_result.debian8
 
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+
