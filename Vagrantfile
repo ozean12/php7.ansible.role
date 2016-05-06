@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
 
   # Ubuntu 14.04
-  config.vm.define "ubuntu", primary: true do |node|
+  config.vm.define "ubuntu1404", primary: true do |node|
     node.vm.box = "ubuntu/trusty64"
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"

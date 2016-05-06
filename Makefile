@@ -12,5 +12,5 @@ run:
 	vagrant provision
 
 clean:
-	rm -f setup.retry
+	rm -f setup.retry build_result*
 	vagrant destroy
