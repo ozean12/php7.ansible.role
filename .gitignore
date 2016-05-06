@@ -2,3 +2,4 @@
 setup.retry
 build_result*
 roles/
+ansible-retry/

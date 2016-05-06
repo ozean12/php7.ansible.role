@@ -4,9 +4,8 @@
 Vagrant.configure("2") do |config|
 
   # Ubuntu 14.04
-  config.vm.define "ubuntu" do |node|
+  config.vm.define "ubuntu", primary: true do |node|
     node.vm.box = "ubuntu/trusty64"
-    
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
       ansible.sudo = true
@@ -14,9 +13,8 @@ Vagrant.configure("2") do |config|
   end
 
   # Debian 7
-  #config.vm.define "debian7", primary: true do |node|
+  #config.vm.define "debian7" do |node|
   #    node.vm.box = "debian/wheezy64"
-  #
   #    node.vm.provision "ansible" do |ansible|
   #        ansible.playbook = "setup.yml"
   #        ansible.sudo = true
@@ -24,9 +22,8 @@ Vagrant.configure("2") do |config|
   #end
 
   # Debian 8
-  config.vm.define "debian8", primary: true do |node|
+  config.vm.define "debian8" do |node|
       node.vm.box = "debian/jessie64"
-  
       node.vm.provision "ansible" do |ansible|
           ansible.playbook = "setup.yml"
           ansible.sudo = true
@@ -34,9 +31,8 @@ Vagrant.configure("2") do |config|
   end
 
   # CentOS 6.7
-  config.vm.define "centos6", primary: true do |node|
+  config.vm.define "centos6" do |node|
     node.vm.box = "bento/centos-6.7"
-  
     node.vm.provision "ansible" do |ansible|
       ansible.playbook = "setup.yml"
       ansible.sudo = true
@@ -44,9 +40,8 @@ Vagrant.configure("2") do |config|
   end
   
   # CentOS 7.2
-  config.vm.define "centos7", primary: true do |node|
+  config.vm.define "centos7" do |node|
       node.vm.box = "bento/centos-7.2"
-  
       node.vm.provision "ansible" do |ansible|
           ansible.playbook = "setup.yml"
           ansible.sudo = true

@@ -1,10 +1,12 @@
-# Ansible Role: PHP7
+# Ansible Role: PHP7 (PHP-FPM)
 
 [![Build Status](https://travis-ci.org/chusiang/php7.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/php7.ansible.role)
 
-An Ansible role of Deploy PHP 7 (php-fpm) for nginx on CentOS, Debian, and Ubuntu. (forked from [https://galaxy.ansible.com/itcraftsmanpl/php7/](https://galaxy.ansible.com/itcraftsmanpl/php7/))
+An Ansible role of Deploy PHP 7 (php-fpm) for nginx on CentOS, Debian, and Ubuntu. (forked from [itcraftsmanpl.php7](https://galaxy.ansible.com/itcraftsmanpl/php7/))
 
-* Current PHP7 version: **7.0.4**
+* Current PHP7 version:
+ * Debian & Ubuntu: **7.0.6**
+ * CentOS: **7.0.5**
 
 ## Requirements
 
@@ -25,7 +27,7 @@ Available variables are listed below, along with default values (see `defaults/m
     debian_php7_apt_key: "https://www.dotdeb.org/dotdeb.gpg"
     ubuntu_php7_ppa_repo: "ppa:ondrej/php"
     
-    php_packages:
+    apt_php_packages:
       - php7.0
       - php7.0-common
       - php7.0-cli
@@ -35,6 +37,16 @@ Available variables are listed below, along with default values (see `defaults/m
       - php7.0-fpm
       - php7.0-mysql
       - php7.0-gd
+    
+    yum_php_packages:
+      - php70u-cli
+      - php70u-fpm
+      - php70u-fpm-nginx
+      - php70u-common
+      - php70u-mysqlnd
+      - php70u-opcache
+      - php70u-pdo
+      #- php70u-mbstring
     
     # need use 'www-data' on Debian8.
     php_owner: nginx
@@ -69,6 +81,8 @@ Available variables are listed below, along with default values (see `defaults/m
 ## Dependencies
 
 None.
+
+> By the way, if you need to setup nginx, you can use [williamyeh.nginx](https://galaxy.ansible.com/williamyeh/nginx/) role.
 
 ## Example Playbook
 
