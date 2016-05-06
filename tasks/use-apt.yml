@@ -3,6 +3,7 @@
 
 ---
 
+# before install.
 - name: Install requires packages
   become: true
   apt: name={{ item }} state=present
@@ -26,15 +27,17 @@
   apt_repository: repo={{ ubuntu_php7_ppa_repo }}
   when: ansible_distribution|lower == "ubuntu"
 
-- name: Update apt
+# Update apt cache.
+- name: Update apt cache
   become: true
   apt: update_cache=true
 
+# Install PHP7 packages.
 - name: Install PHP Packages
   become: true
-  apt: pkg={{ item }} state=latest
-  with_nested: "{{ php_packages }}"
-  when: php_packages is defined
+  apt: name={{ item }} state=latest
+  with_nested: "{{ apt_php_packages }}"
+  when: apt_php_packages is defined
   notify:
     - restart php7-fpm
 
