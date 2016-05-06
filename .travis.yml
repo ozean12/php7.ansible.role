@@ -1,24 +1,27 @@
 language: bash
 sudo: true
 services:
-    - docker
+  - docker
 
 before_install:
-    - docker info
-    - docker version
+  - docker info
+  - docker version
 
-    - echo "==> Build with Docker ..."
+  - echo "==> Build with Docker ..."
 
-    - docker build -f test/Dockerfile         -t php7 .         | tee build_result
-    - docker build -f test/Dockerfile.centos6 -t php7-centos6 . | tee build_result.centos6
-    #- docker build -f test/Dockerfile.debian7 -t php7-debian7 . | tee build_result.debian7
-    - docker build -f test/Dockerfile.debian8 -t php7-debian8 . | tee build_result.debian8
+  - docker build -f tests/Dockerfile.ubuntu1404 -t php7:ubuntu1404 . | tee build_result.ubuntu1404
+  #- docker build -f tests/Dockerfile.debian7 -t php7-debian7 . | tee build_result.debian7
+  - docker build -f tests/Dockerfile.debian8    -t php7:debian8    . | tee build_result.debian8
+  #- docker build -f tests/Dockerfile.centos6    -t php7:centos6    . | tee build_result.centos6
 
 script:
-    - echo "==> Run Test case ..."
+  - echo "==> Run Test case ..."
 
-    - grep '00:00:00 php-fpm7.0' build_result
-    - grep '00:00:00 php-fpm' build_result.centos6
-    #- grep '00:00:00 php-fpm7.0' build_result.debian7
-    - grep '00:00:00 php-fpm7.0' build_result.debian8
+  - grep '00:00:00 php-fpm7.0' build_result.ubuntu1404
+  #- grep '00:00:00 php-fpm7.0' build_result.debian7
+  - grep '00:00:00 php-fpm7.0' build_result.debian8
+  #- grep '00:00:00 php-fpm'    build_result.centos6
+
+notifications:
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/
 

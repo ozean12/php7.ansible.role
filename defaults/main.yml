@@ -2,8 +2,20 @@
 ## vim:ft=ansible :
 
 ---
-php_ppa: "ppa:ondrej/php"
-php_packages:
+
+# All.
+php_timezone: Asia/Taipei
+php_upload_max_filesize: "20M"
+php_post_max_size: "20M"
+php_memory_limit: "1024M"
+
+# Debian & Ubuntu.
+debian_php7_apt_repo: "http://packages.dotdeb.org"
+debian_php7_apt_key: "https://www.dotdeb.org/dotdeb.gpg"
+ubuntu_php7_ppa_repo: "ppa:ondrej/php"
+
+apt_php_packages:
+  - php7.0
   - php7.0-common
   - php7.0-cli
   - php7.0-intl
@@ -12,10 +24,18 @@ php_packages:
   - php7.0-fpm
   - php7.0-mysql
   - php7.0-gd
-  - php7.0-mbstring
-php_timezone: Asia/Taipei
-php_upload_max_filesize: "20M"
-php_post_max_size: "20M"
-php_memory_limit: "1024M"
+
+yum_php_packages:
+  - php70u-cli
+  - php70u-fpm
+  - php70u-fpm-nginx
+  - php70u-common
+  - php70u-mysqlnd
+  - php70u-opcache
+  - php70u-pdo
+  #- php70u-mbstring
+
+# need use 'www-data' on Debian8.
 php_owner: nginx
 php_group: nginx
+

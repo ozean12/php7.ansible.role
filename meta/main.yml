@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: chusiang
-  description: Deploy PHP 7 (php-fpm) for nginx on Ubuntu and CentOS. (forked from https://galaxy.ansible.com/itcraftsmanpl/php7/)
+  description: Deploy PHP 7 (php-fpm) for nginx on Ubuntu and CentOS. (forked from itcraftsmanpl.php7)
   license: MIT
   min_ansible_version: 1.9
   platforms:

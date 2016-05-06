@@ -5,7 +5,7 @@
 #  Blog: http://note.drx.tw
 #  Filename: use-yum.yml
 #  Modified: 2016-03-23 16:27
-#  Description: 
+#  Description: Setup PHP7 on CentOS 6, 7.
 #  Reference: 
 #
 #   * How To Upgrade to PHP 7 on CentOS 7 | DigitalOcean
@@ -15,14 +15,7 @@
 
 ---
 
-- name: Install epel from remote repo on CentOS 7
-  yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present
-  when: ansible_distribution_major_version == "7"
-
-- name: Install remi from remote repo on CentOS 7
-  yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm state=present
-  when: ansible_distribution_major_version == "7"
-
+# before install.
 - name: Install epel from remote repo on CentOS 6
   yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm state=present
   when: ansible_distribution_major_version == "6"
@@ -31,31 +24,28 @@
   yum: name=http://rpms.remirepo.net/enterprise/remi-release-6.rpm state=present
   when: ansible_distribution_major_version == "6"
 
+- name: Install epel from remote repo on CentOS 7
+  yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm state=present
+  when: ansible_distribution_major_version == "7"
+
+- name: Install remi from remote repo on CentOS 7
+  yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm state=present
+  when: ansible_distribution_major_version == "7"
+
 - name: get ius repo install script
   get_url: url=https://setup.ius.io/ dest=/tmp/setup-ius.sh
 
 - name: Install ius from remote repo
   command: bash /tmp/setup-ius.sh
 
+# Upgrade all packages.
 - name: upgrade all packages
   yum: name=* state=latest
 
-- name: Install php
-  yum: pkg={{ item }} enablerepo=ius state=present
-  with_items:
-    - php70u-cli
-    - php70u-fpm
-    - php70u-fpm-nginx
-
-- name: Install php modules
-  #yum: pkg={{ item }} enablerepo=remi,remi-php70 state=present
-  yum: pkg={{ item }} enablerepo=ius state=present
-  with_items:
-    - php70u-common
-    - php70u-mysqlnd
-    - php70u-opcache
-    - php70u-pdo
-    - php70u-mbstring
-  #when: php_packages is defined
+# Install PHP7 packages.
+- name: Install PHP Packages
+  yum: name={{ item }} enablerepo=ius state=present
+  with_nested: "{{ yum_php_packages }}"
+  when: yum_php_packages is defined
   notify: restart php7-fpm on centos
 
