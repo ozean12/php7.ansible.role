@@ -1,14 +1,21 @@
+---
 #!/usr/bin/env ansible-playbook
 # vim:ft=ansible :
 
----
 - hosts: all
   become: true
 
   vars_files:
     - defaults/main.yml
 
+  roles:
+    - chusiang.vim-and-vi-mode
+
   tasks:
+    - name: include vars for debian
+      include_vars: "vars/vars_debian.yml"
+      when: ansible_distribution|lower == "debian"
+
     - name: include main tasks
       include: tasks/main.yml
 

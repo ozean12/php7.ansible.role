@@ -3,15 +3,15 @@
 
 ---
 
-# Ubuntu
+# Debian & Ubuntu.
 - stat: path=/etc/php/7.0/fpm/php.ini
   register: phpfpm_ubuntu
 
-- stat: path=/etc/php/7.0/cli/php.ini
-  register: phpcli_ubuntu
-
 - include: php-fpm-ubuntu.yml
   when: phpfpm_ubuntu.stat.exists
+
+- stat: path=/etc/php/7.0/cli/php.ini
+  register: phpcli_ubuntu
 
 - include: php-cli-ubuntu.yml
   when: phpcli_ubuntu.stat.exists

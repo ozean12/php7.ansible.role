@@ -14,9 +14,19 @@ None.
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    # Ubuntu
-    php_ppa: "ppa:ondrej/php"    
+    # All.
+    php_timezone: Asia/Taipei
+    php_upload_max_filesize: "20M"
+    php_post_max_size: "20M"
+    php_memory_limit: "1024M"
+    
+    # Debian & Ubuntu.
+    debian_php7_apt_repo: "http://packages.dotdeb.org"
+    debian_php7_apt_key: "https://www.dotdeb.org/dotdeb.gpg"
+    ubuntu_php7_ppa_repo: "ppa:ondrej/php"
+    
     php_packages:
+      - php7.0
       - php7.0-common
       - php7.0-cli
       - php7.0-intl
@@ -25,11 +35,8 @@ Available variables are listed below, along with default values (see `defaults/m
       - php7.0-fpm
       - php7.0-mysql
       - php7.0-gd
-
-    php_timezone: Asia/Taipei
-    php_upload_max_filesize: "20M"
-    php_post_max_size: "20M"
-    php_memory_limit: "1024M"
+    
+    # need use 'www-data' on Debian8.
     php_owner: nginx
     php_group: nginx
 
@@ -71,4 +78,4 @@ None.
 
 ## License
 
-MIT
+Copyleft (ɔ) chusiang from 2016 under the MIT license.

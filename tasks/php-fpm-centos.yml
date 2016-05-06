@@ -3,6 +3,9 @@
 
 ---
 
+- debug: msg="==> Setting PHP7 configure on CentOS system"
+
+# Setting  PHP7.
 - name: create socket directory for ceotns 6
   file: path=/run/php-fpm/ state=directory mode=0755
   when: ansible_distribution_major_version == "6"
@@ -34,13 +37,10 @@
 - name: Enable socket upstream of php-fpm 
   lineinfile: "dest=/etc/nginx/conf.d/php-fpm.conf state=present regexp='^        #server unix:/run/php-fpm/www.sock;' line='        server unix:/run/php-fpm/www.sock;'"
   notify: restart php7-fpm on centos
-  
 
 - name: Set listen acl users
   lineinfile: "dest=/etc/php-fpm.d/www.conf state=present regexp='^;?listen.acl_users = nginx' line='listen.acl_users = nginx'"
   notify: restart php7-fpm on centos
-
-
 
 - name: Ensure timezone is set in fpm php.ini
   lineinfile: dest=/etc/php.ini
@@ -112,3 +112,4 @@
               regexp='memory_limit(\s)?='
               line='memory_limit = {{ php_memory_limit }}'
   notify: restart php7-fpm on centos
+
