@@ -30,6 +30,7 @@ Available variables are listed below, along with default values (see `defaults/m
     php_upload_max_filesize: "20M"
     php_post_max_size: "20M"
     php_memory_limit: "1024M"
+    
     php_owner: nginx
     php_group: nginx
 
@@ -71,4 +72,4 @@ None.
 
 ## License
 
-MIT
+Copyleft (ɔ) chusiang from 2016 under the MIT license.
