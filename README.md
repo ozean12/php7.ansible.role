@@ -5,6 +5,7 @@
 An Ansible role of Deploy PHP 7 (php-fpm) for nginx on CentOS, Debian, and Ubuntu. (forked from [itcraftsmanpl.php7](https://galaxy.ansible.com/itcraftsmanpl/php7/))
 
 * Current PHP7 version:
+
  * Debian & Ubuntu: **7.0.6**
  * CentOS: **7.0.5**
 
@@ -66,7 +67,7 @@ Available variables are listed below, along with default values (see `defaults/m
 
 2. The `/target/path/` of **socket**, configure files is difference on Ubuntu and CentOS. **Be careful your Nginx setting !**
 
- * Ubuntu:
+ * Debian & Ubuntu:
       * Configure:
          * `/etc/php/7.0/fpm/php.ini`
          * `/etc/php/7.0/cli/php.ini`
@@ -92,4 +93,4 @@ None.
 
 ## License
 
-Copyleft (ɔ) chusiang from 2016 under the MIT license.
+Copyright (ɔ) chusiang from 2016 under the MIT license.
