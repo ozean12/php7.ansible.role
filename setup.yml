@@ -1,6 +1,5 @@
----
 #!/usr/bin/env ansible-playbook
-# vim:ft=ansible :
+---
 
 - hosts: all
   become: true
@@ -13,7 +12,7 @@
 
   tasks:
     - name: include vars for debian
-      include_vars: "vars/vars_debian.yml"
+      include_vars: "vars/debian.yml"
       when: ansible_distribution|lower == "debian"
 
     - name: include main tasks
@@ -42,3 +41,4 @@
   handlers:
     - include: handlers/main.yml
 
+# vim:ft=ansible :
