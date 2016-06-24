@@ -30,24 +30,28 @@ Available variables are listed below, along with default values (see `defaults/m
     
     apt_php_packages:
       - php7.0
-      - php7.0-common
-      - php7.0-cli
-      - php7.0-intl
-      - php7.0-curl
       - php7.0-cgi
+      - php7.0-cli
+      - php7.0-common
+      - php7.0-curl
       - php7.0-fpm
-      - php7.0-mysql
       - php7.0-gd
+      - php7.0-intl
+      - php7.0-json
+      - php7.0-mysql
+      - php7.0-pear
     
     yum_php_packages:
       - php70u-cli
+      - php70u-common
       - php70u-fpm
       - php70u-fpm-nginx
-      - php70u-common
+      - php70u-json
+      #- php70u-mbstring
       - php70u-mysqlnd
       - php70u-opcache
       - php70u-pdo
-      #- php70u-mbstring
+      - php70u-pear
     
     # need use 'www-data' on Debian8.
     php_owner: nginx
@@ -55,15 +59,15 @@ Available variables are listed below, along with default values (see `defaults/m
 
 ### Note
 
-1. If you see some error message, maybe you need modify `php_owner` and `php_group` from **nginx** to **www-data**. 
+1. If you see some error message, maybe you need modify `php_owner` and `php_group` from **nginx** to **www-data**.
 
  * Browser:
- 
+
      > `An error occurred.`
 
  * error.log:
 
-     > `connect() to unix:/var/run/php/php7.0-fpm.sock failed (13: Permission denied) while connecting to upstream ...` 
+     > `connect() to unix:/var/run/php/php7.0-fpm.sock failed (13: Permission denied) while connecting to upstream ...`
 
 2. The `/target/path/` of **socket**, configure files is difference on Ubuntu and CentOS. **Be careful your Nginx setting !**
 
