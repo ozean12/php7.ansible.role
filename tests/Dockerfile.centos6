@@ -4,30 +4,18 @@
 #   $ docker build -t wordpress .
 #   $ docker run -d -v $(pwd):/data wordpress
 #
-# Version  1.1
+# Version  1.2
 #
-
 
 # pull base image
 FROM williamyeh/ansible:centos6-onbuild
-
 MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
-
 
 #
 # build phase
 #
-
 ENV PLAYBOOK setup.yml
 RUN ansible-playbook-wrapper -vvv
 
-
-#
-# test phase
-#
-
 VOLUME [ "/data" ]
-
-CMD service php-fpm start && \
-    tail -f /dev/null
 
