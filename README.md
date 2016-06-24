@@ -1,6 +1,6 @@
 # Ansible Role: PHP7 (PHP-FPM)
 
-[![Build Status](https://travis-ci.org/chusiang/php7.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/php7.ansible.role) [![Ansible Galaxy](https://img.shields.io/badge/role-php7-blue.svg)](https://galaxy.ansible.com/chusiang/php7/)
+[![Build Status](https://travis-ci.org/chusiang/php7.ansible.role.svg?branch=master)](https://travis-ci.org/chusiang/php7.ansible.role) [![Ansible Galaxy](https://img.shields.io/badge/role-php7-blue.svg)](https://galaxy.ansible.com/chusiang/php7/) [![Docker Hub](https://img.shields.io/badge/docker-php7-blue.svg)](https://hub.docker.com/r/chusiang/php7/)
 
 An Ansible role of Deploy PHP 7 (php-fpm) for nginx on CentOS, Debian, and Ubuntu. (forked from [itcraftsmanpl.php7](https://galaxy.ansible.com/itcraftsmanpl/php7/))
 
@@ -94,6 +94,27 @@ None.
     - hosts: webservers
       roles:
         - { role: chusiang.php7 }
+
+## Docker Container
+
+This repository contains Dockerized [Ansible](https://github.com/ansible/ansible), published to the public [Docker Hub](https://hub.docker.com/) via **automated build** mechanism.
+
+> Docker Hub: [chusiang/php7](https://hub.docker.com/r/chusiang/php7/)
+
+### Images
+
+* chusiang/php7:ubuntu14.04 (lastest)
+* chusiang/php7:centos6
+
+### Usage
+
+    $ docker run -it -v /src:/data chusiang/php7:ubuntu14.04 bash
+    [root@a68e807eec8f tmp]# php -v
+    PHP 7.0.7 (cli) (built: May 31 2016 11:36:12) ( NTS )
+    Copyright (c) 1997-2016 The PHP Group
+    Zend Engine v3.0.0, Copyright (c) 1998-2016 Zend Technologies
+        with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
+    
 
 ## License
 
