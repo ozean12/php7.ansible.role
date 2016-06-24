@@ -21,7 +21,7 @@ RUN yum install -y curl git make ;\
       cd php7.ansible.role ;\
       make init
 
-ENV PLAYBOOK setup.yml
+ENV PLAYBOOK php7.ansible.role/setup.yml
 RUN ansible-playbook-wrapper -vvv
 
 VOLUME [ "/data" ]
