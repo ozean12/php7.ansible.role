@@ -8,16 +8,18 @@
 #
 
 # pull base image
-FROM williamyeh/ansible:ubuntu14.04-onbuild
+FROM williamyeh/ansible:centos6-onbuild
 MAINTAINER Chu-Siang Lai <chusiang.lai@gmail.com>
 
 #
 # build phase
 #
-# fix policy-rc.d for Docker
-# @see http://www.monblocnotes.com/node/2057
-# @see http://askubuntu.com/a/365912
-RUN sed -i -e 's/exit\s\s*101/exit 0/' /usr/sbin/policy-rc.d
+
+# init.
+RUN yum install -y curl git make ;\
+      git clone https://github.com/chusiang/php7.ansible.role.git ;\
+      cd php7.ansible.role ;\
+      make init
 
 ENV PLAYBOOK setup.yml
 RUN ansible-playbook-wrapper -vvv
