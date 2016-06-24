@@ -39,7 +39,7 @@ Available variables are listed below, along with default values (see `defaults/m
       - php7.0-intl
       - php7.0-json
       - php7.0-mysql
-      - php7.0-pear
+      #- php7.0-pear
     
     yum_php_packages:
       - php70u-cli
@@ -47,11 +47,11 @@ Available variables are listed below, along with default values (see `defaults/m
       - php70u-fpm
       - php70u-fpm-nginx
       - php70u-json
-      #- php70u-mbstring
       - php70u-mysqlnd
       - php70u-opcache
       - php70u-pdo
-      - php70u-pear
+      #- php70u-mbstring
+      #- php70u-pear
     
     # need use 'www-data' on Debian8.
     php_owner: nginx

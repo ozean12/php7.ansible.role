@@ -6,12 +6,12 @@
 #  Filename: use-yum.yml
 #  Modified: 2016-03-23 16:27
 #  Description: Setup PHP7 on CentOS 6, 7.
-#  Reference: 
+#  Reference:
 #
 #   * How To Upgrade to PHP 7 on CentOS 7 | DigitalOcean
 #    - https://www.digitalocean.com/community/tutorials/how-to-upgrade-to-php-7-on-centos-7
 #
-# =========================================================== 
+# ============================================================
 
 ---
 
