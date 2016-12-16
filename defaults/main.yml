@@ -4,6 +4,10 @@
 ---
 
 # All.
+php_version: "7.0"
+php_version_yum: "70u"
+#php_version: "7.1"
+#php_version_yum: "71w"
 php_timezone: "Asia/Taipei"
 php_upload_max_filesize: "20M"
 php_post_max_size: "20M"
@@ -15,30 +19,30 @@ debian_php7_apt_key: "https://www.dotdeb.org/dotdeb.gpg"
 ubuntu_php7_ppa_repo: "ppa:ondrej/php"
 
 apt_php_packages:
-  - php7.0
-  - php7.0-cgi
-  - php7.0-cli
-  - php7.0-common
-  - php7.0-curl
-  - php7.0-fpm
-  - php7.0-gd
-  - php7.0-intl
-  - php7.0-json
-  - php7.0-mysql
-  #- php7.0-pear
+  - php{{ php_version }}
+  - php{{ php_version }}-cgi
+  - php{{ php_version }}-cli
+  - php{{ php_version }}-common
+  - php{{ php_version }}-curl
+  - php{{ php_version }}-fpm
+  - php{{ php_version }}-gd
+  - php{{ php_version }}-intl
+  - php{{ php_version }}-json
+  - php{{ php_version }}-mysql
+  #- php{{ php_version }}-pear
 
 # CentOS
 yum_php_packages:
-  - php70u-cli
-  - php70u-common
-  - php70u-fpm
-  - php70u-fpm-nginx
-  - php70u-json
-  - php70u-mysqlnd
-  - php70u-opcache
-  - php70u-pdo
-  #- php70u-mbstring
-  #- php70u-pear
+  - php{{ php_version_yum }}-cli
+  - php{{ php_version_yum }}-common
+  - php{{ php_version_yum }}-fpm
+  - php{{ php_version_yum }}-fpm-nginx
+  - php{{ php_version_yum }}-json
+  - php{{ php_version_yum }}-mysqlnd
+  - php{{ php_version_yum }}-opcache
+  - php{{ php_version_yum }}-pdo
+  #- php{{ php_version_yum }}-mbstring
+  #- php{{ php_version_yum }}-pear
 
 # need use 'www-data' on Debian8.
 php_owner: nginx
