@@ -20,6 +20,18 @@
               regexp='date.timezone ='
               line='date.timezone = {{ php_timezone }}'
 
+- name: Enable pm.status_path if defined
+  lineinfile: dest=/etc/php/{{ php_version }}/fpm/pool.d/www.conf
+              regexp='pm.status_path ='
+              line='pm.status_path = {{ php_pm_status_path }}'
+  when: php_pm_status_path != ""
+
+- name: Enable ping.path if defined
+  lineinfile: dest=/etc/php/{{ php_version }}/fpm/pool.d/www.conf
+              regexp='ping.path ='
+              line='ping.path = {{ php_ping_path }}'
+  when: php_ping_path != ""
+
 - name: Enabling opcache
   lineinfile: dest=/etc/php/{{ php_version }}/fpm/php.ini
               regexp='^#?opcache.enable='

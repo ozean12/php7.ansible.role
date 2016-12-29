@@ -13,6 +13,9 @@ php_upload_max_filesize: "20M"
 php_post_max_size: "20M"
 php_memory_limit: "1024M"
 
+php_pm_status_path: ""
+php_ping_path: ""
+
 # Debian & Ubuntu.
 debian_php7_apt_repo: "http://packages.dotdeb.org"
 debian_php7_apt_key: "https://www.dotdeb.org/dotdeb.gpg"
