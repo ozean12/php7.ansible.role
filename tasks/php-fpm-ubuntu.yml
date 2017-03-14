@@ -76,7 +76,7 @@
 - name: Exclude potentially harmfull php functions
   lineinfile: dest=/etc/php/{{ php_version }}/fpm/php.ini
               regexp='disable_functions(\s)?='
-              line='disable_functions=exec,passthru,system,proc_open,popen'
+              line='disable_functions=exec,passthru,system,popen'
   notify: restart php7-fpm
 
 - name: Set post_max_size
